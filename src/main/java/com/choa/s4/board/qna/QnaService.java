@@ -13,11 +13,18 @@ import com.choa.s4.util.Pager;
 public class QnaService implements BoardService {
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	public int setReply(BoardDTO boardDTO) throws Exception{
+		int result = qnaDAO.setReplyUpdate(boardDTO);
+		result = qnaDAO.setReply(boardDTO);
+		return result;
+		
+	}
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setInsert(boardDTO);
 	}
 
 	@Override
@@ -43,7 +50,7 @@ public class QnaService implements BoardService {
 	@Override
 	public BoardDTO getOne(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return qnaDAO.getOne(boardDTO);
 	}
 
 }

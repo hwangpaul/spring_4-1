@@ -18,7 +18,47 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-
+	@GetMapping("noticeDelete")
+	public void setDelete() {
+		System.out.println("Delete");
+	}
+	
+	@GetMapping("noticeSelect")
+	public ModelAndView getOne(BoardDTO boardDTO) throws Exception{
+		System.out.println("notice select");
+		boardDTO = noticeService.getOne(boardDTO);
+		ModelAndView mv = new ModelAndView();
+		if(boardDTO != null) {
+			mv.setViewName("board/boardSelect");
+			mv.addObject("dto", boardDTO);
+			mv.addObject("board", "notice");
+		}else {
+			mv.setViewName("common/result");
+			mv.addObject("msg", "No Data");
+			mv.addObject("path", "./noticeList");
+		}
+		
+		return mv;
+	}
+	
+	@PostMapping("noticeWrite")
+	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception{
+		System.out.println("qna write");
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setInsert(boardDTO);
+		String message = "Write fail";
+		if(result>0) {
+			message="Write Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 	
 	@GetMapping("noticeWrite")
 	public ModelAndView setInsert() throws Exception{

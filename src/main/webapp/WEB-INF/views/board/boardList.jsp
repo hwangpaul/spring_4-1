@@ -13,7 +13,7 @@
 
 <div class="container">
   <h3>${board} list</h3>
-  <form action="./noticeList">
+  <form action="./${board}List">
   	<div class="input-group">
    		<span class="input-group-addon">Text</span>
    		
@@ -47,8 +47,10 @@
   	<tr>
   		<td>${dto.num}  :  ${vs.count} </td>
   		<td>
-  			<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
   			<a href="./${board}Select?num=${dto.num}">
+  			<c:catch>
+  			<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+  			</c:catch>
   			${dto.title}
   			</a>
   		</td>
