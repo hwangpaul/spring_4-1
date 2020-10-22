@@ -19,10 +19,63 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@GetMapping("noticeDelete")
-	public void setDelete() {
+	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception{
 		System.out.println("Delete");
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setDelete(boardDTO);
+		
+		String message = "Delete Fail"; 
+		
+		if(result>0) {
+			message = "Delete Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		mv.setViewName("common/result");
+		
+		
+		return mv;
+	}
+		
+	
+	@PostMapping("noticeUpdate")
+	public ModelAndView setUpdate2(BoardDTO boardDTO) throws Exception{
+	
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setUpdate(boardDTO);
+		
+		String message = "Update Fail"; 
+		
+		if(result>0) {
+			message = "Update Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		mv.setViewName("common/result");
+		
+		
+		return mv;
+		
 	}
 	
+	@GetMapping("noticeUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
+		System.out.println("update");
+		ModelAndView mv = new ModelAndView();
+		boardDTO = noticeService.getOne(boardDTO);
+		
+		mv.addObject("dto" , boardDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardUpdate");
+		
+		return mv;
+		
+		
+	}
+	
+
 	@GetMapping("noticeSelect")
 	public ModelAndView getOne(BoardDTO boardDTO) throws Exception{
 		System.out.println("notice select");

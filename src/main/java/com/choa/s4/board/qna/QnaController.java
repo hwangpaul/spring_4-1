@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,63 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("qnaDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception{
+		System.out.println("Delete");
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setDelete(boardDTO);
+		
+		String message = "Delete Fail"; 
+		
+		if(result>0) {
+			message = "Delete Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./qnaList");
+		mv.setViewName("common/result");
+		
+		
+		return mv;
+	}
+	
+	@PostMapping("qnaUpdate")
+	public ModelAndView setUpdate2(BoardDTO boardDTO) throws Exception{
+		System.out.println(boardDTO.getTitle());
+		System.out.println(boardDTO.getWriter());
+		System.out.println(boardDTO.getContents());
+		
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setUpdate(boardDTO);
+		
+		String message = "Update Fail"; 
+		
+		if(result>0) {
+			message = "Update Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./qnaList");
+		mv.setViewName("common/result");
+		
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("qnaUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
+		System.out.println("update");
+		ModelAndView mv = new ModelAndView();
+		boardDTO = qnaService.getOne(boardDTO);
+		
+		mv.addObject("dto" , boardDTO);
+		mv.addObject("board", "qna");
+		mv.setViewName("board/boardUpdate");
+		
+		return mv;
+		
+	}
 	
 	@PostMapping("qnaReply")
 	public ModelAndView setReply(BoardDTO boardDTO) throws Exception{
