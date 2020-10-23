@@ -12,7 +12,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 	<h3>Member Join Page</h3>
-	<form action="./memberJoin" method="post">
+	<form action="./memberJoin" method="post" id="frm">
 	    <div class="form-group">
 	      <label for="id">ID:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
@@ -25,7 +25,7 @@
 	    
 	     <div class="form-group">
 	      <label for="pw">Password:</label>
-	      <input type="password" class="form-control" id="pw" placeholder="Enter password" name="pw2">
+	      <input type="password" class="form-control" id="pw2" placeholder="Enter password" name="pw2">
 	    </div>
 	    
 	   	 <div class="form-group">
@@ -39,9 +39,9 @@
 	    </div>
 	    
 	    
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    <button type="submit" class="btn btn-default" id="btn">Submit</button>
 	</form>
 </div>
-
+		<script type="text/javascript" src="../resources/js/boardWrite.js"></script>
 </body>
 </html>
