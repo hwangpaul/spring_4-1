@@ -16,12 +16,12 @@
   <form id="frm" action="./${board}Write" method="post">
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+      <input type="text" class="form-control"  id="title" placeholder="Enter Title" name="title">
     </div>
     
 	<div class="form-group">
       <label for="writer">Writer:</label>
-      <input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer">
+      <input type="text" class="form-control" readonly="readonly" value="${member.id}" id="writer" placeholder="Enter Writer" name="writer">
     </div>
     
      <div class="form-group">
