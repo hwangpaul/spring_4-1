@@ -5,6 +5,10 @@
 
 <mapper namespace="com.choa.s4.member.memberUser.MemberUserDAO">
 
+	<insert id="setMemberJoin" parameterType="MemberDTO">
+		insert into member_1 values (member_asd.nextval, #{id}, #{pw}, #{name}, #{email})
+	</insert>
+
 	<delete id="setMemberDelete" parameterType="MemberDTO">
 		delete member_1 where id=#{id}
 	</delete>

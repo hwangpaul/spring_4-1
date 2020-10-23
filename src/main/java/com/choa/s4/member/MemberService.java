@@ -8,5 +8,7 @@ public interface MemberService {
 	
 	public int setMemberDelete(MemberDTO memberDTO) throws Exception;
 	
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception;
+	
 
 }
