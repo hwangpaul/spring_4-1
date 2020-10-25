@@ -20,7 +20,7 @@
 	</select>
 	
 	<insert id="setInsert" parameterType="NoticeDTO">
-		insert into board values(notice2.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
+		insert into board values(notice.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
 	</insert>
 	
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
