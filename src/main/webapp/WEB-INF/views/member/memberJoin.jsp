@@ -44,7 +44,7 @@
 	</form>
 </div>
 <script type="text/javascript">
-	$("id").blur(function() {
+	$("#id").blur(function() {
 		
 	});
 	
