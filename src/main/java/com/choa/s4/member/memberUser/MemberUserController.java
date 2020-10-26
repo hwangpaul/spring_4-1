@@ -18,6 +18,14 @@ public class MemberUserController {
 	@Autowired
 	private MemberUserService memberUserService;
 	
+	//getIdCheck
+	@PostMapping("memberCheck")
+	public int getIdCheck(MemberDTO memberDTO) throws Exception{
+		int result = memberUserService.getIdCheck(memberDTO);
+		
+		return result;
+	}
+	
 	//join
 	@PostMapping("memberJoin")
 	public ModelAndView setMemberJoin(MemberDTO memberDTO) throws Exception{

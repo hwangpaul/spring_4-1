@@ -10,5 +10,7 @@ public interface MemberService {
 	
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception;
 	
+	public int getIdCheck(MemberDTO memberDTO) throws Exception;
+	
 
 }

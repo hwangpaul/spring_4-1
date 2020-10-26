@@ -25,5 +25,7 @@ public interface BoardDAO {
 	
 	//count
 	public long getCount(Pager pager)throws Exception;
+	
+
 
 }
