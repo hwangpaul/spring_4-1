@@ -26,11 +26,8 @@ public class MemoController {
 		System.out.println("Result : "+result);
 		String message = "Delete Fail";
 		
-		if(result > 0) {
-			message = "Delete Success";
-		}
 		
-		mv.addObject("msg", message);
+		mv.addObject("msg", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}

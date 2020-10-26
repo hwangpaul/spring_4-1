@@ -16,6 +16,7 @@
 	    <div class="form-group">
 	      <label for="id">ID:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
+	      <div id="idResult">사용 가능한 ID</div>
 	    </div>
 	    
 	    <div class="form-group">
@@ -42,8 +43,13 @@
 	    <button type="submit" class="btn btn-default" id="btn">Submit</button>
 	</form>
 </div>
+<script type="text/javascript">
+	$("id").blur(function() {
+		
+	});
+	
+</script>
 
-<script type="text/javascript" src="../resources/js/boardWrite.js"></script>
 
 </body>
 </html>
