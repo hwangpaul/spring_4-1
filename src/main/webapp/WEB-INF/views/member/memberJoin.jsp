@@ -70,12 +70,13 @@
 		var id = $("#id").val();
 			//중복체크했고, 사용 가능한 ID
 			if(idCheck && pwCheck && emptyCheckResult){
-				alert("OK");
+				$("#frm").submit();
 			}
+			
 			//중복체크를 안했거나, 사용 불가능한 ID
-			else {
-				alert("NO");
-			}
+//			else {
+//				alert("NO");
+//			}
 			
 		
 			
