@@ -42,12 +42,13 @@
 	</div>
 
 <script type="text/javascript">
-	
+	var curPage=1;	
 
 	getList();
 	
 	//************ more ****************
 	$("#more").click(function() {
+		curPage++;
 		getList();
 		
 	})
@@ -67,7 +68,8 @@
 				data=data.trim();
 				
 				if(data>0) {
-					alert("Delete Success")
+					$("#result").html('');
+					curPage=1;
 					getList();
 				}else {
 					alert("Delete Fail")
@@ -94,6 +96,8 @@
 				alert(result);
 				$("#writer").val('');
 			    $("#contents").val('');
+			    $("#result").html('');
+			    curPage=1;
 				getList();
 			}
 			
@@ -110,6 +114,7 @@
 		$.ajax({
 			url : "./memoList",
 			type : "GET",
+			data : {curPage:curPage},
 			success : function (data) {
 				$("#result").append(data);
 			}
