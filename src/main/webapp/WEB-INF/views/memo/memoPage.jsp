@@ -37,6 +37,7 @@
 			
 			</table>
 		</div>
+		
 		<button class="btn btn-danger" id="more">더보기</button>
 		
 	</div>
@@ -68,7 +69,7 @@
 				data=data.trim();
 				
 				if(data>0) {
-					$("#result").html('');
+					$("#result").html('');//초기화
 					curPage=1;
 					getList();
 				}else {
@@ -96,7 +97,7 @@
 				alert(result);
 				$("#writer").val('');
 			    $("#contents").val('');
-			    $("#result").html('');
+			    $("#result").html('');//초기화
 			    curPage=1;
 				getList();
 			}
