@@ -39,15 +39,18 @@
 	      <label for="pw">Password:</label>
 	      <input type="password" class="form-control" id="pw2" placeholder="Enter password" name="pw2">
 	    </div>
+	    <div id="pwResult"></div>
 	    
 	   	 <div class="form-group">
 	      <label for="name">Name:</label>
-	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+	      <input type="text" class="form-control empty" id="name" placeholder="Enter Name" name="name">
+	      <div class="emptyResult"></div>
 	    </div> 
 	    
 	   	<div class="form-group">
 	      <label for="email">Email:</label>
-	      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+	      <input type="text" class="form-control empty" id="email" placeholder="Enter Email" name="email">
+	      <div class="emptyResult"></div>
 	    </div>
 	    
 	    <input type="button" value="Join" class="btn btn-default" id="join">
@@ -55,48 +58,111 @@
 	</form>
 </div>
 <script type="text/javascript">
+
+	var idCheck = false;
+	var pwCheck = false;
+	var	emptyCheckResult = true;
+
+
+//***********  check ******************	
 	$("#join").click(function() {
-		
+		emptyCheck();
 		var id = $("#id").val();
-		$.get("./memberIdCheck?id="+id, function(data) {
 			//중복체크했고, 사용 가능한 ID
-			if(data == 0){
+			if(idCheck && pwCheck && emptyCheckResult){
 				alert("OK");
 			}
 			//중복체크를 안했거나, 사용 불가능한 ID
-			else if(data == 1){
+			else {
 				alert("NO");
 			}
 			
-		});
 		
-		
-		
-		
+			
+			
 		//$("#frm").submit();
 	});
+//*********** check ******************
+
+
+//*********** empty check ******************
+	function emptyCheck() {
+		emptyCheckResult = true;
+		$(".emptyResult").removeClass("idCheck1");
+		$(".emptyResult").html('');
+		$(".empty").each(function() {
+			var data = $(this).val();
+			if(data==''){
+				emptyCheckResult = false;
+				$(this).next().html("필수 항목입니다")
+				$(".emptyResult").addClass("idCheck1");
+			}
+		});
+	
+	}
+	
+	
+//*********** empty check ******************	
+	
+	
+//*********** pw check ******************
+	$("#pw2").blur(function() {
+		var pw = $("#pw").val();
+		var pw2 = $(this).val();
+		pwCheck = false;
+		
+		if(pw2 == ''){
+			$("#pwResult").html("PW를 입력하세요");
+			$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+			
+		}else if(pw == pw2){
+			$("#pwResult").html("PW가 일치합니다");
+			$("#pwResult").removeClass("idCheck1").addClass("idCheck0");
+			pwCheck = true;
+			
+		}else {
+			$("#pwResult").html("PW가 일치하지 않습니다");
+			$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+			
+		}
+		
+		
+	});
+//*********** pw check ******************
 
 	
 	
+//*********** id check ******************	
 	$("#id").blur(function() {
+		idCheck=false;
 		var id = $(this).val();
+		if(id != ''){
 		$.get("./memberIdCheck?id="+id,function(data){
 			//a 사용가능, b 사용불가
 			//true 사용가능 false 사용불가
 			//0 사용가능 	1 사용불가
 			data=data.trim();
 			var str = "중복된 ID 입니다";
+			
 			$("#idResult").addClass("idCheck1");
+			
 			if(data==0){
 				str = "사용 가능한 ID 입니다"
 				$("#idResult").removeClass("idCheck1").addClass("idCheck0");
+				idCheck = true;
 			}
 			$("#idResult").html(str);
 			
 		});
-		
+		}else {
+			$("#idResult").html("ID는 필수항목입니다");
+			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
+			
+		}
 		
 	});
+	
+	//*********** id check ******************		
 </script>
 
 
