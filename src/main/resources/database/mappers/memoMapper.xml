@@ -45,6 +45,6 @@
 	</select>
 		
 	<insert id="setInsert" parameterType="MemoDTO">
-		insert into memo values(qna_seq2.nextval,  #{writer}, #{contents}, sysdate)
+		insert into memo values(qna_seq.nextval,  #{writer}, #{contents}, sysdate)
 	</insert>
 </mapper>    
