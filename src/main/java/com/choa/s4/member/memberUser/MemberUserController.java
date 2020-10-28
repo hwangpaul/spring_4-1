@@ -116,10 +116,12 @@ public class MemberUserController {
 	}
 	
 	@GetMapping("memberPage")
-	public ModelAndView getMemberpage() throws Exception{
+	public ModelAndView getMemberpage(MemberFileDTO memberFileDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		System.out.println(memberFileDTO.getFileName());
 		
+	
 		mv.setViewName("member/memberPage");
 		return mv;
 	}
