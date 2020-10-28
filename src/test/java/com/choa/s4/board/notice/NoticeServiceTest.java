@@ -13,10 +13,10 @@ import com.choa.s4.util.Pager;
 
 public class NoticeServiceTest extends MyTestCase {
 
-	@Autowired
+	//@Autowired
 	private NoticeService noticeService;
 	
-	@Test
+	//@Test
 	public void getListTest()throws Exception{
 		Pager pager = new Pager();
 		

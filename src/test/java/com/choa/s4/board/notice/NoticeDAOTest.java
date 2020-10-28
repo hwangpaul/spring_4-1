@@ -13,10 +13,10 @@ import com.choa.s4.util.Pager;
 
 public class NoticeDAOTest extends MyTestCase {
 
-	@Autowired
+	//@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();

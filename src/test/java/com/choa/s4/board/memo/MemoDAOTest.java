@@ -12,7 +12,7 @@ import com.choa.s4.util.Pager;
 
 public class MemoDAOTest extends MyTestCase{
 
-	@Autowired
+	//@Autowired
 	private MemoDAO memoDAO;
 	
 	//@Test
@@ -25,7 +25,7 @@ public class MemoDAOTest extends MyTestCase{
 		assertEquals(10, ar.size());
 		
 	}
-	@Test
+	//@Test
 	public void setInsertTest()throws Exception{
 		for(int i=0;i<100;i++) {
 			MemoDTO memoDTO = new MemoDTO();

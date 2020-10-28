@@ -11,10 +11,10 @@ import com.choa.s4.member.memberUser.MemberUserDAO;
 
 public class MemberUserDAOTest extends MyTestCase{
 	
-	@Autowired
+	//@Autowired
 	private MemberUserDAO memberUserDAO;
 	
-	@Test
+	//@Test
 	public void getMemberIdCheckTest() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id1");
