@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.choa.s4.member.MemberDTO;
+import com.choa.s4.member.memberFile.MemberFileDAO;
+import com.choa.s4.member.memberFile.MemberFileDTO;
 
 @Controller
 @RequestMapping("/member/**")
@@ -19,6 +21,7 @@ public class MemberUserController {
 	
 	@Autowired
 	private MemberUserService memberUserService;
+	
 	
 	//idCheck
 	@GetMapping("memberIdCheck")
@@ -115,6 +118,8 @@ public class MemberUserController {
 	@GetMapping("memberPage")
 	public ModelAndView getMemberpage() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		
 		mv.setViewName("member/memberPage");
 		return mv;
 	}
