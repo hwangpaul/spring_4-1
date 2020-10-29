@@ -21,9 +21,31 @@
 		update member set name=#{name}, email=#{email} where id=#{id}
 	</update>	
 
-	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberUserDTO">
-		select * from member where id = #{id} and pw = #{pw}
+	<resultMap type="MemberDTO" id="getMemberLoginResult">
+		<id column="num" property="num"/>
+		<result column="id" property="id"/>
+		<result column="pw" property="pw"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="memberFileResult">
+		</association>
+	</resultMap>
+	
+	<resultMap type="MemberFileDTO" id="memberFileResult">
+		<id column="num" property="num"/>	
+		<result column="id" property="id"/>
+		<result column="filename" property="fileName"/>
+		<result column="oriname" property="oriName"/> 
+	</resultMap>
+
+	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberLoginResult">
+		select M. *, F.filename, F.oriname
+		from member M inner join memberfile F
+		on(M.id = F.id)
+		where M.id = #{id} and M.pw = #{pw}
 	</select>
+	
+
 	
 
 	

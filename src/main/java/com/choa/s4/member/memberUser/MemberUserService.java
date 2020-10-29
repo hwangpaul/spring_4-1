@@ -27,10 +27,10 @@ public class MemberUserService implements MemberService {
 	@Autowired
 	private FileSaver fileSaver;
 	
-	public MemberFileDTO getOne(MemberDTO memberDTO) throws Exception {
-		return memberFileDAO.getOne(memberDTO);
-	}
-	
+//	public MemberFileDTO getOne(MemberDTO memberDTO) throws Exception {
+//		return memberFileDAO.getOne(memberDTO);
+//	}
+//	
 	@Override
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub

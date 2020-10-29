@@ -5,7 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="../template/bootStrap.jsp"></c:import>	
+<c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	#f {
+		display: none;
+	}
+
+    .del {
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,19 +40,51 @@
       <textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
     </div>  
     
-    	<div class="form-group">
-	      <label for="files">File:</label>
-	      <input type="file" class="form-control" id="files" name="files">
-	      
-	    </div>	
+	<input type="button" value="File Add" class="btn btn-info" id="fileadd">
+	
+	
+	<div id="files">
+	
+	</div>
+		
+    
     
     <input type="button" class="btn btn-primary" value="Write" id="btn">
     <button type="submit" class="btn btn-default">Write</button>
     <button>TestButton</button>
+     
   </form>
+  <div id="f">
+       <div class="input-group">
+        <input id="file" type="file" class="form-control" name="files">
+        <span class="input-group-addon del">DEL</span>
+      </div>
+	</div>
+    
 </div>
+<script type="text/javascript">
+	var count = 0;
+	
+	$("#files").on("click", ".del", function() {
+		$(this).parent().remove();
+		count --;
+	});	
 
-<script type="text/javascript" src="../resources/js/boardWrite.js"></script>
+	$("#fileadd").click(function () {
+		
+		if(count<5){
+		var f = $("#f").html().trim();
+		
+		$("#files").append(f);
+		count++;
+		}else{
+			alert("첨부파일은 최대 5개")
+		}
+	});
+	
+
+
+</script>
 
 </body>
 </html>
