@@ -30,7 +30,7 @@
 		</tr>
 	</table>
 	<div>
-		<img alt="" src="../resources/upload/member/${result}">
+		<img alt="" src="../resources/upload/member/${file.fileName}">
 	</div>
 	
 	<a href="./memberUpdate" class="btn btn-primary">Update</a>

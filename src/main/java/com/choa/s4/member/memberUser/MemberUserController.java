@@ -116,12 +116,11 @@ public class MemberUserController {
 	}
 	
 	@GetMapping("memberPage")
-	public ModelAndView getMemberpage(MemberFileDTO memberFileDTO) throws Exception{
+	public ModelAndView getMemberpage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		System.out.println(memberFileDTO.getFileName());
-		
-	
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		MemberFileDTO memberFileDTO = memberUserService.getOne(memberDTO);
+		mv.addObject("file", memberFileDTO);
 		mv.setViewName("member/memberPage");
 		return mv;
 	}

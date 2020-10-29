@@ -7,6 +7,10 @@
 	
 	<insert id="setInsert" parameterType="MemberFileDTO">
 		insert into memberfile values(member_seq.nextval, #{id}, #{fileName}, #{oriName})
-	</insert>	
+	</insert>
+	
+	<select id="getOne" parameterType="MemberDTO" resultType="MemberFileDTO">
+		select * from memberFile where id=#{id}
+	</select>	
 	
 </mapper>    
