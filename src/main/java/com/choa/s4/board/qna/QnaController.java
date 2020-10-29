@@ -130,10 +130,10 @@ public class QnaController {
 	}
 	
 	@PostMapping("qnaWrite")
-	public ModelAndView setInsert(BoardDTO boardDTO, MultipartFile file, HttpSession session) throws Exception{
+	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception{
 		System.out.println("qna write");
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setInsert(boardDTO, file, session);
+		int result = qnaService.setInsert(boardDTO);
 		String message = "Write fail";
 		if(result>0) {
 			message="Write Success";

@@ -47,10 +47,8 @@
 	
 	</div>
 		
-    
-    
-    <input type="button" class="btn btn-primary" value="Write" id="btn">
-    <button type="submit" class="btn btn-default">Write</button>
+    <input type="button" class="btn btn-primary form-control" value="Write" id="btn">
+    <button type="submit" class="btn btn-default form-control">Write</button>
     <button>TestButton</button>
      
   </form>

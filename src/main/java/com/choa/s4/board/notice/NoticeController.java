@@ -99,7 +99,7 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeWrite")
-	public ModelAndView setInsert(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
+	public ModelAndView setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception{
 		System.out.println("qna write");
 		ModelAndView mv = new ModelAndView();
 		
@@ -107,20 +107,18 @@ public class NoticeController {
 			System.out.println(files[i].getOriginalFilename());
 		}
 		
-		//int result = noticeService.setInsert(boardDTO, files, session);
-//		String message = "Write fail";
-//		if(result>0) {
-//			message="Write Success";
-//		}
+		int result = noticeService.setInsert(boardDTO);
+		String message = "Write fail";
+		if(result>0) {
+			message="Write Success";
+		}
 		
-//		mv.addObject("msg", message);
-//		mv.addObject("path", "./noticeList");
-//		
-//		mv.setViewName("common/result");
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
 		
-//		System.out.println(files.getOriginalFilename());
-//		System.out.println(files.getName());
-//		System.out.println(files.getSize());
+		mv.setViewName("common/result");
+		
+		
 		
 		return mv;
 	}
