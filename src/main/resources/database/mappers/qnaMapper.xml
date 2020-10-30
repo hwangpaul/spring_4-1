@@ -44,9 +44,15 @@
 	
 	</select>
 	
+	<insert id="setInsertFile" parameterType="BoardFileDTO">
+		insert into qnaFile values (qna_seq.nextval, #{num}, #{fileName}, #{oriName})
+	</insert>
 	
 	<insert id="setInsert" parameterType="QnaDTO">
-		insert into qna values(qna_seq.nextval
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+			select qna_seq.nextval from dual
+		</selectKey>
+		insert into qna values(#{num}
 		, #{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval,0,0)
 	</insert>
 	
@@ -74,8 +80,25 @@
 		delete qna where num=#{num}
 	</delete>
 	
-	<select id="getOne" parameterType="QnaDTO" resultType="QnaDTO">
-		select * from qna where num =#{num}
+	<resultMap type="QnaDTO" id="getOneResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="regDate" property="regDate"/>
+		<result column="hit" property="hit"/>
+		<collection property="boardFileDTOs" ofType="BoardFileDTO" javaType="java.util.List">
+			<id column="fileNUm" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>			
+		</collection>
+	</resultMap>
+	
+	<select id="getOne" parameterType="QnaDTO" resultMap="getOneResult">
+		select Q.*, QF.*
+		from qna Q left join qnaFile QF
+		on Q.num = QF.num
+		where Q.num=#{num}
 	</select>
 
 	

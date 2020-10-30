@@ -2,11 +2,14 @@ package com.choa.s4.board;
 
 import java.util.List;
 
+import com.choa.s4.board.file.BoardFileDTO;
 import com.choa.s4.util.Pager;
 
 public interface BoardDAO {
 	
 	//abstract 메서드의 선언부
+	
+
 	
 	//insert
 	public int setInsert(BoardDTO boardDTO) throws Exception;

@@ -15,6 +15,7 @@
   		<typeAlias type="com.choa.s4.member.memberUser.MemberUserDTO" alias="MemberUserDTO"/>
   		<typeAlias type="com.choa.s4.member.memberFile.MemberFileDTO" alias="MemberFileDTO"/>
   		<typeAlias type="com.choa.s4.util.Pager" alias="Pager"/>
+  		<typeAlias type="com.choa.s4.board.file.BoardFileDTO" alias="BoardFileDTO"/>
   		
   		
   		
