@@ -22,53 +22,45 @@ public class QnaService implements BoardService {
 	@Autowired
 	private FileSaver fileSaver;
 	
-	public int setReply(BoardDTO boardDTO) throws Exception{
+	public int setReply(BoardDTO boardDTO)throws Exception{
 		int result = qnaDAO.setReplyUpdate(boardDTO);
 		result = qnaDAO.setReply(boardDTO);
 		return result;
-		
 	}
+
 
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
-		
+		// TODO Auto-generated method stub
 		int result = qnaDAO.setInsert(boardDTO);
 		
-		String path = session.getServletContext().getRealPath("resources/upload/qna");
+		String path = session.getServletContext().getRealPath("/resources/upload/qna/");
 		File file = new File(path);
-		System.out.println(path);
 		
-		
-		
-		System.out.println("Num :"+boardDTO.getNum());
-		
-		for(MultipartFile multipartFile:files) {
-			if(multipartFile.getSize() != 0) {
-				String flieName = fileSaver.saveCopy(file, multipartFile);
-				
+		for(MultipartFile multipartFile: files) {
+			if(multipartFile.getSize() !=0) {
+				String fileName = fileSaver.saveCopy(file, multipartFile);
 				BoardFileDTO boardFileDTO = new BoardFileDTO();
-				boardFileDTO.setFileName(flieName);
+				boardFileDTO.setFileName(fileName);
 				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
-				boardFileDTO.setNum(boardFileDTO.getNum());
-				
+				boardFileDTO.setNum(boardDTO.getNum());
 				qnaDAO.setInsertFile(boardFileDTO);
-				
 			}
 		}
 		
 		return result;
 	}
-
+	
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.setDelete(boardDTO);
+		return 0;
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.setDelete(boardDTO);
+		return 0;
 	}
 
 	@Override

@@ -19,68 +19,62 @@ public class MemoController {
 	private MemoService memoService;
 	
 	@PostMapping("memoDelete")
-	public ModelAndView setDelete(MemoDTO memoDTO) throws Exception{
+	public ModelAndView setDelete(MemoDTO memoDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		int result = memoService.setDelete(memoDTO);
-		System.out.println("Result : "+result);
-		String message = "Delete Fail";
-		
 		
 		mv.addObject("msg", result);
 		mv.setViewName("common/ajaxResult");
+		
 		return mv;
 	}
 	
 	@GetMapping("memoList")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(Pager pager)throws Exception{
 		System.out.println("Memo List");
 		List<MemoDTO> ar = memoService.getList(pager);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);
 		mv.setViewName("memo/memoTest");
-		
 		return mv;
-		
 	}
 	
 	@PostMapping("memoWrite")
-	public ModelAndView setInsert(MemoDTO memoDTO) throws Exception{
-		System.out.println("Memo Write");
-		System.out.println(memoDTO.getWriter());
-		System.out.println(memoDTO.getContents());
+	public ModelAndView setInsert(MemoDTO memoDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = memoService.setInsert(memoDTO);
-		
-		String message = "Write Fail";
-		if(result > 0) {
-			message = "Write Success";
+		String message="Write Fail";
+		if(result>0) {
+			message= "Write Success";
 		}
 		
 		mv.addObject("msg", message);
 		mv.setViewName("common/ajaxResult");
 		
 		return mv;
-			
 	}
+	
 	@GetMapping("memoTest")
-	public ModelAndView memoTest(MemoDTO memoDTO) throws Exception{
+	public ModelAndView memoTest(MemoDTO memoDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(memoDTO.getNum());
-		
-		memoDTO = memoService.getOne(memoDTO);
+		memoDTO = memoService.getOne(memoDTO);	
 		mv.addObject("dto", memoDTO);
 		mv.setViewName("memo/memoTest");
-		System.out.println(memoDTO.getNum());
-		System.out.println(memoDTO.getWriter());
-		System.out.println(memoDTO.getContents());
-		
 		return mv;
 	}
 	
 	@GetMapping("memoPage")
-	public void memoPage() throws Exception{
-		
-		
-	}
+	public void memoPage() throws Exception{}
+
 }
+
+
+
+
+
+
+
+
+
+

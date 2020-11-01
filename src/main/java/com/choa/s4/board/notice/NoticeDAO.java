@@ -17,12 +17,11 @@ public class NoticeDAO implements BoardDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.choa.s4.board.notice.NoticeDAO.";
 
-	public Long getNum() throws Exception{
+	public Long getNum()throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getNum");
 	}
 	
-	public int setInsertFile(BoardFileDTO boardFileDTO) throws Exception {
-		// TODO Auto-generated method stub
+	public int setInsertFile(BoardFileDTO boardFileDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsertFile", boardFileDTO);
 	}
 	
@@ -35,13 +34,13 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
+		return 0;
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
+		return 0;
 	}
 
 	@Override

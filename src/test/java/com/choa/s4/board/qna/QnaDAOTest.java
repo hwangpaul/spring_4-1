@@ -10,7 +10,7 @@ import com.choa.s4.board.BoardDTO;
 
 public class QnaDAOTest extends MyTestCase {
 
-	//@Autowired
+	@Autowired
 	private QnaDAO qnaDAO;
 	
 	//@Test

@@ -18,14 +18,12 @@ public class NoticeDAOTest extends MyTestCase {
 	private NoticeDAO noticeDAO;
 	
 	@Test
-	public void setInserFileTest() throws Exception{
+	public void setInsertFileTest()throws Exception{
 		BoardFileDTO boardFileDTO = new BoardFileDTO();
-		boardFileDTO.setFileName("fileName1");
-		boardFileDTO.setNum(121);
-		boardFileDTO.setOriName("oriName1");
-		
+		boardFileDTO.setNum(144);
+		boardFileDTO.setFileName("ttt");
+		boardFileDTO.setOriName("000");
 		int result = noticeDAO.setInsertFile(boardFileDTO);
-		
 		assertEquals(1, result);
 	}
 	

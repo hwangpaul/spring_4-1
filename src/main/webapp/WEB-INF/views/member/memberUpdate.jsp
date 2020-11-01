@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>	
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -16,18 +16,18 @@
 	<form action="./memberUpdate" method="post">
 	    <div class="form-group">
 	      <label for="name">Name:</label>
-	      <input type="text" class="form-control" id="name" name="name" value="${member.name}">
+	      <input type="text" class="form-control" value="${member.name}" id="name" name="name">
 	    </div>
 	    
 	    <div class="form-group">
 	      <label for="email">Email:</label>
-	      <input type="text" class="form-control" id="email" name="email" value="${member.email}">
+	      <input type="text" class="form-control" value="${member.email}" id="email" name="email">
 	    </div>
-	   
+	    
 	    <button type="submit" class="btn btn-default">Submit</button>
-</form>
-			
-</div>	
+  	</form>
+
+</div>
 
 </body>
 </html>

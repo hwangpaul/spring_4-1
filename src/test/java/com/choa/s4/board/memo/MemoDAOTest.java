@@ -10,21 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.choa.s4.MyTestCase;
 import com.choa.s4.util.Pager;
 
-public class MemoDAOTest extends MyTestCase{
+public class MemoDAOTest extends MyTestCase {
 
 	//@Autowired
 	private MemoDAO memoDAO;
 	
 	//@Test
-	public void getListTest() throws Exception{
+	public void getListTest()throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();
-		
 		List<MemoDTO> ar = memoDAO.getList(pager);
-		
 		assertEquals(10, ar.size());
 		
 	}
+	
 	//@Test
 	public void setInsertTest()throws Exception{
 		for(int i=0;i<100;i++) {
@@ -38,5 +37,6 @@ public class MemoDAOTest extends MyTestCase{
 		}
 		System.out.println("Insert Finish");
 	}
+	
 
 }

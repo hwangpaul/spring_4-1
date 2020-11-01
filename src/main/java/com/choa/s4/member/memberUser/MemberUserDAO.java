@@ -3,7 +3,6 @@ package com.choa.s4.member.memberUser;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.choa.s4.member.MemberDAO;
 import com.choa.s4.member.MemberDTO;
@@ -13,8 +12,8 @@ public class MemberUserDAO implements MemberDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.choa.s4.member.memberUser.MemberUserDAO.";
-	
+	private final String NAMESPACE="com.choa.s4.member.memberUser.MemberUserDAO.";
+
 	@Override
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -37,16 +36,12 @@ public class MemberUserDAO implements MemberDAO {
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE+"setMemberUpdate", memberDTO);
-	}	
+	}
 	
 	@Override
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
 	}
-
-
-	
-	
 
 }

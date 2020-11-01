@@ -7,7 +7,6 @@ public class BoardFileDTO {
 	private String fileName;
 	private String oriName;
 	
-	
 	public long getFileNum() {
 		return fileNum;
 	}

@@ -3,12 +3,10 @@ package com.choa.s4.board.memo;
 import java.sql.Date;
 
 public class MemoDTO {
-	
 	private long num;
 	private String writer;
 	private String contents;
 	private Date regDate;
-	
 	
 	public long getNum() {
 		return num;
@@ -16,6 +14,9 @@ public class MemoDTO {
 	public void setNum(long num) {
 		this.num = num;
 	}
+
+	
+	
 	public String getWriter() {
 		return writer;
 	}
@@ -34,8 +35,6 @@ public class MemoDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	
 	
 	
 

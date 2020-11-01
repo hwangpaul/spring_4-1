@@ -19,25 +19,18 @@ public class QnaDAO implements BoardDAO {
 	private final String NAMESPACE="com.choa.s4.board.qna.QnaDAO.";
 	
 	
+	public int setInsertFile(BoardFileDTO boardFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsertFile", boardFileDTO);
+	}
 	
-	public int setReply(BoardDTO boardDTO) throws Exception{
+	public int setReply(BoardDTO boardDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReply", boardDTO);
-		
-	}
-	
-	public int setReplyUpdate(BoardDTO boardDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+"setReplyUpdate", boardDTO);
-		
-	}
-	
-	public long getNum() throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getNum");
-	}
-	
-	public int setInsertFile(BoardFileDTO boardFileDTO) {
-		return sqlSession.insert(NAMESPACE+"setInsertFIle", boardFileDTO);
 	}
 
+	public int setReplyUpdate(BoardDTO boardDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setReplyUpdate", boardDTO);
+	}
+	
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -47,13 +40,13 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
+		return 0;
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
+		return 0;
 	}
 
 	@Override

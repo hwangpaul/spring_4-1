@@ -1,7 +1,6 @@
 package com.choa.s4.util;
 
 import java.io.File;
-import java.util.Calendar;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
@@ -10,42 +9,37 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileSaver {
-	
-	//MultipartFIleTransferTo
-	public String saveTransferTo(File dest, MultipartFile multipartFile) throws Exception{
+	//MutipartFile transferTo
+	public String saveTransfer(File dest, MultipartFile multipartFile)throws Exception{
 		if(!dest.exists()) {
 			dest.mkdirs();
 		}
 		
 		String fileName = UUID.randomUUID().toString();
-		fileName = fileName+"_"+multipartFile.getOriginalFilename();
+		fileName = fileName+"_"+ multipartFile.getOriginalFilename();
 		
 		dest = new File(dest, fileName);
 		
 		multipartFile.transferTo(dest);
 		
 		return fileName;
-		
 	}
 	
 	//FilecopyUtil.copy
-	public String saveCopy(File dest, MultipartFile multipartFile) throws Exception{
+	public String saveCopy(File dest, MultipartFile multipartFile)throws Exception{
+		
 		if(!dest.exists()) {
 			dest.mkdirs();
 		}
 		
 		String fileName = UUID.randomUUID().toString();
-		fileName = fileName+"_"+multipartFile.getOriginalFilename();
+		fileName = fileName+"_"+ multipartFile.getOriginalFilename();
 		
 		dest = new File(dest, fileName);
 		
 		FileCopyUtils.copy(multipartFile.getBytes(), dest);
 		
 		return fileName;
-		
 	}
-		
-		
-	
 
 }

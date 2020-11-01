@@ -17,6 +17,7 @@ public class BoardDTO {
 	List<BoardFileDTO> boardFileDTOs;
 	
 	
+	
 	public List<BoardFileDTO> getBoardFileDTOs() {
 		return boardFileDTOs;
 	}

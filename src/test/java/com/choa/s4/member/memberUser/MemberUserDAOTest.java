@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.choa.s4.MyTestCase;
 import com.choa.s4.member.MemberDTO;
-import com.choa.s4.member.memberUser.MemberUserDAO;
 
-public class MemberUserDAOTest extends MyTestCase{
-	
-	//@Autowired
+public class MemberUserDAOTest extends MyTestCase {
+
+	@Autowired
 	private MemberUserDAO memberUserDAO;
 	
 	//@Test
-	public void getMemberIdCheckTest() throws Exception{
+	public void getMemberIdCheckTest()throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id1");
 		memberDTO = memberUserDAO.getMemberIdCheck(memberDTO);
@@ -24,12 +23,13 @@ public class MemberUserDAOTest extends MyTestCase{
 	}
 	
 	//@Test
-	public void getMemberLogin() throws Exception{
+	public void getMemberLoginTest()throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id1");
-		memberDTO.setPw("pw1");
+		memberDTO.setPw("pw112");
 		memberDTO = memberUserDAO.getMemberLogin(memberDTO);
 		
 		assertNotNull(memberDTO);
 	}
+
 }
