@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.choa.s4.board.BoardDTO;
+import com.choa.s4.board.file.BoardFileDTO;
 import com.choa.s4.util.Pager;
 
 @Controller
@@ -20,6 +21,40 @@ import com.choa.s4.util.Pager;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("noticeUpdate")
+	public ModelAndView setUpdate() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("board", "notice");
+	
+		mv.setViewName("board/boardUpdate");
+		
+		return mv;
+	}
+	
+	@PostMapping("noticeUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setUpdate(boardDTO);
+		
+		boardDTO = noticeService.getOne(boardDTO);
+		mv.addObject("dto", boardDTO);
+		
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(BoardFileDTO boardFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("board", "notice");
+		mv.addObject("fileDTO", boardFileDTO);
+		mv.setViewName("fileDown");
+		return mv;
+	}
 	
 	@GetMapping("noticeSelect")
 	public ModelAndView getOne(BoardDTO boardDTO)throws Exception{

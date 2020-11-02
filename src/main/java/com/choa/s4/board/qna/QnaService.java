@@ -22,13 +22,26 @@ public class QnaService implements BoardService {
 	@Autowired
 	private FileSaver fileSaver;
 	
+	public String summernote(MultipartFile file, HttpSession session) throws Exception{
+		//파일을 하드디스크에 저장하고 저장된 파일명을 리턴
+		
+		String path = session.getServletContext().getRealPath("resources/upload/qna/");
+		System.out.println(path);
+		File dest = new File(path);
+		
+		String fileName = fileSaver.saveCopy(dest, file);
+		
+		
+	
+		return fileName;
+	}
+	
 	public int setReply(BoardDTO boardDTO)throws Exception{
 		int result = qnaDAO.setReplyUpdate(boardDTO);
 		result = qnaDAO.setReply(boardDTO);
 		return result;
 	}
-
-
+	
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub

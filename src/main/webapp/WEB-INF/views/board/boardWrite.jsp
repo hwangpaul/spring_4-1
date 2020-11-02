@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
 	#f {
 		display: none;
@@ -17,6 +20,7 @@
 		cursor: pointer;
 	}
 </style>
+
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -36,7 +40,7 @@
     
      <div class="form-group">
       <label for="contents">Contents:</label>
-      <textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
+      <textarea class="form-control" rows="20" cols="30" id="contents" name="contents"></textarea>
     </div>
     
 	<input type="button" value="FileAdd" id="fileAdd" class="btn btn-info">
@@ -63,6 +67,42 @@
 </div>
 <script type="text/javascript">
 	var count=0;
+	 $('#contents').summernote({
+		 
+		height:300,
+		callbacks: {
+			onImageUpload:function(files, editor){
+				var formData = new FormData();	// 가상의 form 태그
+				formData.append('file', files[0])//파라미터 이름 file
+				
+				$.ajax({
+					type:"POST",
+					url:"./summernote",
+					data:formData,
+					enctype:"miltipart/form-data",
+					cache:false,
+					contentType:false,
+					processData:false,
+					success:function(data){
+						alert(data);
+						
+					}
+					
+				})
+				
+				
+			}
+		}
+	 
+	 });
+	 
+	 $("#contents").summernote('code', 'Hello World')
+	 
+	 $("#btn").click(function() {
+		
+		var contents = $("#contents").summernote('code')
+		alert(contents);
+	});
 	
 
 	$("#files").on("click", ".del", function() {
