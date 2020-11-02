@@ -1,5 +1,6 @@
 package com.choa.s4.board.qna;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,47 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@PostMapping("summernoteDelete")
+	public ModelAndView summernoteDelete(String file, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = qnaService.summernoteDelete(file, session);
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+		
+	}
+	
+	@PostMapping("summernote")
+	public ModelAndView summernote(MultipartFile file, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		String fileName = qnaService.summernote(file, session);
+		
+		System.out.println(fileName);
+		
+		String name = session.getServletContext().getContextPath()+File.separator;
+		name = name+"resources"+File.separator+"upload"+File.separator;
+		name = name+"qna"+File.separator+fileName;
+		System.out.println(name);
+		
+		mv.addObject("msg", name);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("qnaUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		boardDTO = qnaService.getOne(boardDTO);
+		
+		mv.addObject("dto", boardDTO);
+		
+		return mv;
+	}
 	
 	@GetMapping("fileDown")
 	public ModelAndView fileDown(BoardFileDTO boardFileDTO)throws Exception{
@@ -82,6 +124,7 @@ public class QnaController {
 	@PostMapping("qnaWrite")
 	public ModelAndView setInsert(BoardDTO boardDTO, MultipartFile [] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("asdf");
 		int result = qnaService.setInsert(boardDTO, files, session);
 		String message="Write Fail";
 		if(result>0) {
