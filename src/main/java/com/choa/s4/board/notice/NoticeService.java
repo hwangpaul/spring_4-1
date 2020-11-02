@@ -21,8 +21,31 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	@Autowired
 	private FileSaver fileSaver;
+	
+	public boolean summernoteDelete(String file, HttpSession session) throws Exception{
+		String path = session.getServletContext().getRealPath("/resources/upload/notice");
+		File file2 = new File(path, file);
+		
+		boolean result = false;
+		if(file2.exists()) {
+			result = file2.delete();
+		}
+		
+		return result;
+	}
+	
 
-
+	public String summernote(MultipartFile file, HttpSession session) throws Exception{
+		
+		String path = session.getServletContext().getRealPath("/resources/upload/notice");
+		System.out.println(path);
+		File dest = new File(path);
+		
+		String fileName = fileSaver.saveCopy(dest, file);
+		
+		return fileName;
+	}
+	
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		
@@ -39,7 +62,11 @@ public class NoticeService implements BoardService {
 		System.out.println("Num : "+boardDTO.getNum());
 		//---- NoticeFile Insert
 		
-		for(MultipartFile multipartFile:files) {
+		for(int i=0;i<files.length;i++) {
+			if(i==0) {
+				continue;
+			}
+			MultipartFile multipartFile = files[i];
 			if(multipartFile.getSize() !=0) {
 				String fileName = fileSaver.saveCopy(file, multipartFile);
 				

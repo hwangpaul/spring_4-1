@@ -84,19 +84,42 @@
 					contentType:false,
 					processData:false,
 					success:function(data){
-						alert(data);
+						data = data.trim();
+						$("#contents").summernote('editor.insertImage', data);
+						
 						
 					}
 					
 				})
 				
 				
+			}, // upload End
+			
+			onMediaDelete:function(files) {
+			var fileName = $(files[0]).attr("src");
+				//fileName에서 파일명만 구해오기
+				// s4/resources/upload/qna/sdfw-fwwa-iu1.jpg
+				fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
+				
+				$.ajax({
+					type:"POST",
+					url: "./summernoteDelete",
+					data: {
+						file:fileName
+					},
+					success: function(data){
+						alert(data);
+					}
+			
+				});
+				
 			}
 		}
 	 
+	 
 	 });
 	 
-	 $("#contents").summernote('code', 'Hello World')
+	 $("#contents").summernote('code')
 	 
 	 $("#btn").click(function() {
 		
