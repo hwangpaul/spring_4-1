@@ -135,7 +135,7 @@ public class MemberUserController {
 		System.out.println(memberDTO.getId());
 		System.out.println(memberDTO.getPw());
 		memberDTO = memberUserService.getMemberLogin(memberDTO);
-		
+		System.out.println(memberDTO);
 		if(memberDTO != null) {
 			//index 페이지로 이동
 			//redirect
