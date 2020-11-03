@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>	
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -15,8 +15,8 @@
 	<h3>Member Login Page</h3>
 	<form action="./memberLogin" method="post">
 	    <div class="form-group">
-	      <label for="id">ID:</label>
-	      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
+	      <label for="id">Id:</label>
+	      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
 	    </div>
 	    <div class="form-group">
 	      <label for="pw">Password:</label>
@@ -26,7 +26,7 @@
 	      <label><input type="checkbox" name="remember"> Remember me</label>
 	    </div>
 	    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+  </form>
 </div>
 
 </body>

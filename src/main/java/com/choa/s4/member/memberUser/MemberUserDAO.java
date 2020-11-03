@@ -12,7 +12,13 @@ public class MemberUserDAO implements MemberDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.choa.s4.member.memberUser.MemberUserDAO.";
+	private final String NAMESPACE="com.choa.s4.member.memberUser.MemberUserDAO.";
+
+	@Override
+	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getMemberIdCheck", memberDTO);
+	}
 	
 	@Override
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
@@ -30,16 +36,12 @@ public class MemberUserDAO implements MemberDAO {
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE+"setMemberUpdate", memberDTO);
-	}	
+	}
 	
 	@Override
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
 	}
-
-
-	
-	
 
 }
