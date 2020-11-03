@@ -54,13 +54,28 @@ public class QnaController {
 		
 	}
 	
-	@GetMapping("qnaUpdate")
+	@PostMapping("noticeUpdate")
 	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setUpdate(boardDTO);
 		
 		boardDTO = qnaService.getOne(boardDTO);
-		
 		mv.addObject("dto", boardDTO);
+		
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("qnaUpdate")
+	public ModelAndView setUpdate() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("board", "qna");
+		
+		mv.setViewName("board/boardUpdate");
+		
+		
 		
 		return mv;
 	}

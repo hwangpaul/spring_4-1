@@ -35,14 +35,14 @@
 <script type="text/javascript">
 	//$("css선택자").action();
 	$("#update").click(function() {
-		location.href="./noticeUpdate?num=${dto.num}";
+		location.href="./${board}Update?num=${dto.num}";
 	});
 	
 	$("#del").click(function() {
 		//var num = $("#num").html();
 		var num = $(this).attr("title");
 		alert(num);
-		location.href="./noticeDelete?num="+num;
+		location.href="./${board}Delete?num="+num;
 	});
 
 </script>
