@@ -1,6 +1,7 @@
 package com.choa.s4.member.memberUser;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,7 +132,7 @@ public class MemberUserController {
 	}
 	
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, String remember , HttpSession session)throws Exception{
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, String remember , HttpSession session, HttpServletResponse response)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Remember : "+remember);
 		
@@ -140,7 +141,14 @@ public class MemberUserController {
 		if(remember != null) {
 			Cookie cookie = new Cookie("remember", memberDTO.getId());
 			
-		}
+			response.addCookie(cookie);
+			
+		}else {
+			Cookie cookie = new Cookie("remember", "");//이름이 같아서 기존 쿠키에 덮어씌움
+			
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		} 
 		
 		System.out.println(memberDTO.getId());
 		System.out.println(memberDTO.getPw());
