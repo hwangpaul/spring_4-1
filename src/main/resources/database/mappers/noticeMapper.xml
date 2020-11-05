@@ -6,7 +6,7 @@
 <mapper namespace="com.choa.s4.board.notice.NoticeDAO">
 
 	<insert id="setInsertFile" parameterType="BoardFileDTO">
-		insert into noticeFile values(notice_seq.nextval,#{num}, #{fileName}, #{oriName})
+		insert into noticeFile values(162,#{num}, #{fileName}, #{oriName})
 	</insert>
 
 
@@ -38,7 +38,7 @@
 		select N.*, NF.*
 		from notice N left join noticeFile NF
 		on N.num = NF.num
-		where N.num='a'
+		where N.num=#{num}
 	</select>
 	
 	<select id="getNum" resultType="Long">
